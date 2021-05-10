@@ -1,0 +1,83 @@
+
+#include<stdio.h>
+
+
+int main()
+{
+    int m,n,count=1;
+    while(1)
+    {
+        scanf("%d%d",&m,&n);
+        if(m==0&&n==0)break;
+        getchar();
+
+        char a[m][n];
+        int o=0;
+        int x[m][n];
+        int i,j;
+        for (i=0;i<m;i++)
+        {
+            for (j=0;j<n;j++)
+            {
+                scanf("%c",&a[i][j]);
+
+            }getchar();
+        }
+
+        for(i=0;i<m;i++)
+        {
+            for(j=0;j<n;j++)
+            {
+                x[i][j]=0;
+            }
+
+        }
+
+        for(i=0;i<m;i++)
+        {
+            for(j=0;j<n;j++)
+            {
+                if(a[i][j]=='*')
+                {
+                    int k=i-1,kk=i+1,l=j-1,ll=j+1;
+                        if(k>=0&&l>=0) x[k][l]++;
+
+                        if(k>=0) x[k][j]++;
+                        if(k>=0&&ll<n) x[k][ll]++;
+
+
+
+                        if(l>-1) x[i][l]++;
+                        if(ll<n) x[i][ll]++;
+
+
+                        if(kk<m&&l>-1) x[kk][l]++;
+                        if(kk<m) x[kk][j]++;
+                        if(kk<m&&ll<n) x[kk][ll]++;
+
+
+                }
+            }
+        }
+        printf("Field #%d:\n",count);
+
+        for(i=0;i<m;i++)
+        {
+            for(j=0;j<n;j++)
+            {
+                if(a[i][j]=='*') printf("*");
+                else printf("%d",x[i][j]);
+            }printf("\n");
+
+        }
+        count++;
+        printf("\n");
+
+
+
+
+
+    }
+
+    return 0;
+}
