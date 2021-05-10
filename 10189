@@ -1,4 +1,3 @@
-
 #include<stdio.h>
 
 
@@ -59,8 +58,8 @@ int main()
                 }
             }
         }
-        printf("Field #%d:\n",count);
-
+        if(count==1)printf("Field #%d:\n",count);
+        else printf("\nField #%d:\n",count);
         for(i=0;i<m;i++)
         {
             for(j=0;j<n;j++)
@@ -70,12 +69,8 @@ int main()
             }printf("\n");
 
         }
+
         count++;
-        printf("\n");
-
-
-
-
 
     }
 
