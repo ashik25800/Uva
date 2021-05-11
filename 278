@@ -1,0 +1,46 @@
+#include<stdio.h>
+
+int minimum(int a,int b)
+{
+    if (a>b) return b;
+    else return a;
+}
+
+
+int main()
+{
+    int l,i;
+    char ch;
+    int m,n;
+
+    scanf("%d",&l);
+    for (i=0;i<l;i++)
+    {
+        getchar();
+        scanf("%c",&ch);
+        scanf("%d%d",&m,&n);
+
+        int min=minimum(m,n);
+        if(ch=='Q')
+            printf("%d\n",min);
+        else if(ch=='K')
+        {
+            if(m%2!=0)m++;
+            if(n%2!=0)n++;
+
+            printf("%d\n", (m*n)/4);
+        }
+
+        else if(ch=='r')
+            printf("%d\n",min);
+        else if(ch=='k')
+            {
+                int x=m*n;
+                if(x%2!=0) x++;
+                printf("%d\n",x/2);
+            }
+
+    }
+
+    return 0;
+}
