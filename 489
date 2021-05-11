@@ -1,0 +1,79 @@
+#include<iostream>
+#include<algorithm>
+#include<stdio.h>
+
+using namespace std;
+
+string duplicate_remover(string a)
+{
+    for(int i=0;i<a.length();i++)
+    {
+        for(int j=i+1;j<a.length();j++)
+        {
+            if(a[i]==a[j]&&a[i]!='0')
+            {
+                a[j]='0';
+            }
+        }
+    }
+    a.erase(remove(a.begin(),a.end(),'0'),a.end());
+    return a;
+}
+
+
+
+int checker(string main,string guess)
+{
+    int cont=0;
+    int valid_checker=0;
+    for (int i=0;i<guess.length();i++)
+    {
+        int flag=0;
+        for (int j=0;j<main.length();j++)
+        {
+            if(guess[i]==main[j])
+            {
+                flag=1;
+            }
+        }
+
+        if(flag==0) cont++;
+        if(flag==1)valid_checker++;
+        if(valid_checker==main.length() && cont<7) return 0;
+        else if(cont>=7 && valid_checker<main.length()) return 10;
+
+    }
+    return 5;
+
+}
+
+
+int main()
+{
+    int n;
+    while(1)
+    {
+        cin>>n;
+        if(n==-1) break;
+
+        string main,guess;
+        cin>>main;
+        cin>>guess;
+
+        int value;
+
+        main=duplicate_remover(main);
+        guess=duplicate_remover(guess);
+
+        int check=checker(main,guess);
+
+
+        if(check==0) printf("Round %d\nYou win.\n",n);
+        else if(check>=7) printf("Round %d\nYou lose.\n",n);
+        else printf("Round %d\nYou chickened out.\n",n);
+
+    }
+
+
+    return 0;
+}
