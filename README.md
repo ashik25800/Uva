@@ -1,2 +1,2 @@
 # Uva
-All uva solutions are available here.
+All uva solutions which are solved by me, available here.
